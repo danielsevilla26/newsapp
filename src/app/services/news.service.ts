@@ -10,6 +10,6 @@ export class NewsService {
   constructor( private http: HttpClient) { }
 
   getTopHeadlines(){
-    return this.http.get<ResponseTopHeadlines>(`https://newsapi.org/v2/everything?q=tesla&from=2021-05-16&sortBy=publishedAt&apiKey=bdba368191394f01bd1667b4d25c8d53`);
+    return this.http.get<ResponseTopHeadlines>(`https://saurav.tech/NewsAPI/top-headlines/category/health/in.json`);
   }
 }
