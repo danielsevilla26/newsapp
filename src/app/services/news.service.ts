@@ -1,15 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ResponseTopHeadlines } from '../interfaces/interfaces';
+import { environment } from '../../environments/environment.prod';
+
+const apiUrl = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class NewsService {
 
   constructor( private http: HttpClient) { }
 
+  private executeQuery<T>(query: string){
+    query = apiUrl + query;
+    return this.http.get<T>(query);
+  }
+
   getTopHeadlines(){
-    return this.http.get<ResponseTopHeadlines>(`https://saurav.tech/NewsAPI/top-headlines/category/health/in.json`);
+    return this.executeQuery<ResponseTopHeadlines>(`top-headlines/category/health/us.json`);
+  }
+
+  getTopHeadlinesCategory(category: string){
+    return this.executeQuery<ResponseTopHeadlines>(`top-headlines/category/${ category }/us.json`);
   }
 }
