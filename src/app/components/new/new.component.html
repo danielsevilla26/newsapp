@@ -12,7 +12,9 @@
     </ion-card-title>
   </ion-card-header>
 
-  <ion-img *ngIf="new.urlToImage" [src]="new.urlToImage">
+  <ion-img *ngIf="new.urlToImage" 
+            [src]="new.urlToImage"
+            (click)="openNew()">
   </ion-img>
 
   <ion-card-content>
