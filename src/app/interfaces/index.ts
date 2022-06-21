@@ -1,4 +1,4 @@
-export interface ResponseTopHeadlines{
+export interface NewsResponse{
     status: string;
     totalResults: number;
     articles: Article[];
@@ -18,4 +18,11 @@ export interface Article{
 export interface Source{
     id?: string;
     name: string;
+}
+
+export interface ArticlesByCategoryAndPage{
+    [key: string] : {
+        page: number,
+        articles: Article[]
+    }
 }

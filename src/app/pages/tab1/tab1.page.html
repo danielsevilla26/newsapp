@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header [translucent]="true" mode="ios" class="ion-no-border">
   <ion-toolbar>
     <ion-title>
       Daniel's News
@@ -6,6 +6,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <app-news [noticias]="noticias" ></app-news>
+<ion-content [fullscreen]="true">
+  
+  <ion-header collapse="condense" mode="ios" class="ion-no-border">
+    <ion-toolbar>
+      <ion-title size="large">Daniel's News</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-articles [articles]="articles" ></app-articles>
+
+  <ion-infinite-scroll threshold="25%" position="bottom" (ionInfinite)="loadData()">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
